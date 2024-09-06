@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>34</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <style>
+        canvas {
+            background-color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+    <div style="display: flex; width: 100%; height: 100vh; align-items: center; justify-content: center;">
+        <canvas id="myCanvas" width="800" height="500" style="border:2px solid black"></canvas>
+        <img id="horse" src="horse.png" alt="horse" width="0" height="0">
+        <img id="apple" src="apple.png" alt="apple" width="0" height="0">
+        <img id="pasto" src="pasto.png" alt="pasto" width="0" height="0">
+        <img id="ig" src="ig.png" alt="ig" width="0" height="0">
+    </div>
+
+    <script>
+        const canvas = document.getElementById("myCanvas");
+        const ctx = canvas.getContext("2d");
+
+        const horse = document.getElementById("horse");
+        const apple = document.getElementById("apple");
+        const pasto = document.getElementById("pasto");
+        const ig = document.getElementById("ig");
+
+        //Jugador
+        class Player {
+            constructor() {
+                this.img = horse;
+                this.x = 20;
+                this.y = 430;
+                this.width = 50;
+                this.height = 50;
+                this.speed = 5;
+                this.score = 0;
+                this.direction = "";
+            }
+        }
+
+        // Clase Target
+        class Target {
+            constructor(x, y) {
+                this.img = apple;
+                this.x = x;
+                this.y = y;
+                this.width = 30;
+                this.height = 30;
+            }
+
+            move(dx, dy) {
+                this.x = dx;
+                this.y = dy;
+            }
+        }
+
+        // Clase Wall
+        class Wall {
+            constructor(x, y) {
+                this.img = pasto;
+                this.x = x;
+                this.y = y;
+                this.width = 25;
+                this.height = 25;
+            }
+        }
+
+        // Funcion coordenadas
+        function getRandomCoord(max) {
+            return Math.floor(Math.random() * (max));
+        }
+
+        //Objetos
+        const audio = new Audio("key.mp3");
+        audio.loop = true;
+        const horseeat =  new Audio("horse.mov");
+        horseeat.volume = 0.3;
+        let isPaused = false;
+        var player = new Player();
+        var target = new Target(getRandomCoord(770), getRandomCoord(470));
+        var igT = new Target(688,470);
+        igT.img = ig;
+        igT.width = 20;
+        igT.height = 20;
+        var walls = [new Wall(200, 380), new Wall(225, 380), new Wall(250, 380), new Wall(275, 380), new Wall(300, 380),
+        new Wall(300, 200), new Wall(325, 200), new Wall(350, 200), new Wall(375, 200), new Wall(400, 200), new Wall(425, 200), new Wall(450, 200),
+        new Wall(600, 300), new Wall(625, 300), new Wall(650, 300), new Wall(675, 300),
+        ];
+        requestAnimationFrame(drawAndC);
+
+        //Colision
+        function colision(objectOne, objectTwo) {
+            return (
+                ((objectOne.x + objectOne.width) >= objectTwo.x) &&
+                ((objectTwo.x + objectTwo.width) >= objectOne.x) &&
+                ((objectOne.y + objectOne.height) >= objectTwo.y) &&
+                ((objectTwo.y + objectTwo.height) >= objectOne.y)
+            )
+        }
+
+        //Pintar
+        function draw(object) {
+            ctx.fillStyle = object.color;
+            ctx.fillRect(object.x, object.y, object.width, object.height);
+        }
+
+        function drawImgobject(object) {
+            ctx.drawImage(object.img, object.x, object.y, object.width, object.height);
+        }
+
+        //Direccion
+        function direction(direction) {
+            switch(direction) {
+                case 'up':
+                    player.y -= player.speed;
+                    back();
+                    break;
+                case 'down':
+                    player.y += player.speed;
+                    back();
+                    break;
+                case 'right':
+                    player.x += player.speed;
+                    back();
+                break;
+                case 'left':
+                    player.x -= player.speed;
+                    back();
+                break;
+            }
+        }
+
+        //RegresarPlayer
+        function back() {
+            if (player.x >= 800) {
+                player.x = -40;
+            }else if(player.x + player.width <= 0) {
+                player.x = 790;
+            }else if(player.y >= 500) {
+                player.y = -40;
+            }else if(player.y + player.height <= 0) {
+                player.y = 490;
+            }
+        }
+
+        //Fade Pause
+        function fade() {
+            if (isPaused) {
+                ctx.fillStyle = "black";
+
+                ctx.globalAlpha = (ctx.globalAlpha >= 1) ? 0 : ctx.globalAlpha;
+
+                if(ctx.globalAlpha <= 0.002) {
+                    ctx.globalAlpha += 0.0004;
+                }
+                
+                ctx.globalAlpha = (ctx.globalAlpha >= 0.99) ? 0.002 : ctx.globalAlpha;
+
+                ctx.fillRect(0, 0, 800, 500);
+
+                ctx.globalAlpha = (ctx.globalAlpha >= 0.002) ? 0.99 : ctx.globalAlpha;
+
+                ctx.fillStyle = "white";
+                ctx.font = "60px Arial";
+                ctx.fillText("PAUSE", 300, 260, 800, 500);
+
+                requestAnimationFrame(fade);
+            }
+        }
+
+        //drawAndC
+        function drawAndC(){
+
+            if (isPaused) {
+                requestAnimationFrame(fade);
+                return;
+            };
+
+            ctx.globalAlpha = 1;
+
+            ctx.fillStyle = "white";
+            ctx.fillRect(0, 0, 800, 500);
+
+            ctx.strokeStyle = "black";
+            ctx.fillStyle = "black";
+            ctx.font = "15px Arial";
+            ctx.strokeRect(55, 10, 40, 40);
+            ctx.strokeRect(10, 55, 40, 40);
+            ctx.strokeRect(55, 55, 40, 40);
+            ctx.strokeRect(100, 55, 40, 40);
+
+            ctx.fillText("W", 69, 35, 30, 30);
+            ctx.fillText("A", 25, 80, 30, 30);
+            ctx.fillText("S", 70, 80, 30, 30);
+            ctx.fillText("D", 115, 80, 30, 30);
+
+            ctx.fillText("Score:", 700, 20, 50, 40);
+            ctx.fillText("Speed:", 700, 40, 50, 40);
+
+            walls.forEach(function(wall, i, array){
+                drawImgobject(wall);
+                while (colision(player, wall)) {
+                    switch (player.direction) {
+                        case 'up':
+                            player.y = player.y + 1;
+                            break;
+                        case 'down':
+                            player.y = player.y - 1;
+                            break;
+                        case 'right':
+                            player.x = player.x - 1;
+                        break;
+                        case 'left':
+                            player.x = player.x + 1;
+                        break;       
+                    }
+                    player.direction = (!colision(player, wall)) ? "" : player.direction;
+                }
+
+                while(colision(target, wall)) {
+                    target.move(getRandomCoord(770), getRandomCoord(470));
+                }
+                while(colision(player, target)) {
+                    horseeat.play();
+                    target.move(getRandomCoord(770), getRandomCoord(470));
+                    player.score += 1;
+                }
+            });
+
+            ctx.fillText(player.score, 755, 20, 30, 40);
+            ctx.fillText(player.speed, 755, 40, 30, 40);
+            drawImgobject(player);
+            drawImgobject(target);
+
+            drawImgobject(igT);
+            ctx.fillStyle = "black";
+            ctx.fillRect(713, 470, 2, 20);
+            ctx.font = "13px Arial";
+            ctx.fillText("ivanrios_ss", 720, 484, 100, 20);
+
+            direction(player.direction);
+            requestAnimationFrame(drawAndC);
+        }
+
+        // Función de controles
+        function controles(event) {
+            if (event.key.toLowerCase() === 'p') {
+                isPaused = !isPaused;
+                if (!isPaused) drawAndC();
+                return;
+            }
+
+            if (isPaused) return;
+
+            switch (event.key) {
+                case 'a':
+                case 'A':
+                    player.direction = "left";
+                    break;
+                case 's':
+                case 'S':
+                    player.direction = "down";
+                    break;
+                case 'd':
+                case 'D':
+                    player.direction = "right";
+                    audio.play();
+                    break;
+                case 'w':
+                case 'W':
+                    player.direction = "up";
+                    break;
+                case '+':
+                    player.speed = player.speed + 1;
+                    break;
+                case '-':
+                    player.speed = player.speed - 1;
+                    break;
+            }
+        }
+
+        document.addEventListener("keydown", controles);
+
+    </script>
+    
+</body>
+</html>
