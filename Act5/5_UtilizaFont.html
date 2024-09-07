@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+
+<head>
+    <style>
+        canvas{
+            background: gray;
+        }
+    </style>
+</head>
+
+<html>
+    <body>
+
+        <canvas id="myCanvas" width="500" height="500" style="border:1px solid grey"></canvas>
+
+        <script>
+            const canvas = document.getElementById("myCanvas");
+            const ctx = canvas.getContext("2d");
+
+            ctx.strokeStyle="black";
+            ctx.beginPath();
+            ctx.strokeRect(20, 20, 100, 100);
+
+            ctx.fillStyle="red";
+            ctx.beginPath();
+            ctx.fillRect(100, 100, 100, 100);
+
+            ctx.fillStyle="pink";
+            ctx.beginPath();
+            ctx.fillRect(180, 180, 100, 100);
+
+            ctx.fillStyle="yellow";
+            ctx.globalAlpha=0.3;
+            ctx.beginPath();
+            ctx.fillRect(260, 260, 100, 100);
+
+            ctx.strokeStyle="red";
+            ctx.globalAlpha=1;
+            ctx.lineWidth = 3;
+            ctx.beginPath();
+            ctx.strokeRect(340, 340, 100, 100);
+
+            ctx.beginPath();
+            ctx.globalAlpha=1;
+            ctx.arc(350, 150, 65, 0, 2 * Math.PI);
+            ctx.stroke();
+
+            ctx.fillStyle="yellow";
+            ctx.globalAlpha=0.3;
+            ctx.beginPath();
+            ctx.arc(350, 150, 65, 0, 2 * Math.PI);
+            ctx.fill();
+
+            ctx.strokeStyle="black";
+            ctx.globalAlpha=1;
+            ctx.beginPath();
+            ctx.arc(350, 160, 40, 0, 1 * Math.PI);
+            ctx.stroke();
+
+            ctx.beginPath();
+            ctx.moveTo(450, 300);
+            ctx.lineTo(450, 200);
+            ctx.strokeStyle = "red";
+            ctx.stroke();
+
+            ctx.beginPath();
+            ctx.moveTo(20, 450);
+            ctx.lineTo(220, 450);
+            ctx.lineTo(110, 300);
+            ctx.lineTo(20, 450);
+            ctx.strokeStyle = "red";
+            ctx.stroke();
+            ctx.fillStyle="yellow";
+            ctx.globalAlpha=0.3;
+            ctx.fill();
+
+            ctx.font="40px AcademyEngravedLetPlain";
+            ctx.globalAlpha=1;
+            ctx.fillText("Hola mundo", 20, 50);
+
+            ctx.font="40px AcademyEngravedLetPlain";
+            ctx.globalAlpha=1;
+            ctx.strokeStyle="black"
+            ctx.lineWidth = 1;
+            ctx.strokeText("Hola mundo", 21, 51);
+
+
+        </script>
+
+    </body>
+</html>

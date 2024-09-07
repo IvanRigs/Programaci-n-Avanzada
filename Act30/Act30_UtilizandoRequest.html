@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>30</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <style>
+        canvas {
+            background-color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+    <div style="display: flex; width: 100%; height: 100vh; align-items: center; justify-content: center;">
+        <canvas id="myCanvas" width="800" height="500" style="border:2px solid black"></canvas>
+    </div>
+
+    <script>
+        const canvas = document.getElementById("myCanvas");
+        const ctx = canvas.getContext("2d");
+
+        //Jugador
+        class Player {
+            constructor() {
+                this.color = "#8bbcf7";
+                this.x = 20;
+                this.y = 430;
+                this.width = 50;
+                this.height = 50;
+                this.speed = 5;
+                this.score = 0;
+                this.direction = "";
+            }
+        }
+
+        // Clase Target
+        class Target {
+            constructor(x, y) {
+                this.color = "#f6cc31";
+                this.x = x;
+                this.y = y;
+                this.width = 30;
+                this.height = 30;
+            }
+
+            move(dx, dy) {
+                this.x = dx;
+                this.y = dy;
+            }
+        }
+
+        // Funcion coordenadas
+        function getRandomCoord(max) {
+            return Math.floor(Math.random() * (max));
+        }
+
+        //Objetos
+        var player = new Player();
+        var target = new Target(getRandomCoord(770), getRandomCoord(470));
+        requestAnimationFrame(drawAndC);
+
+        //Colision
+        function colision(objectOne, objectTwo) {
+            return (
+                ((objectOne.x + objectOne.width) >= objectTwo.x) &&
+                ((objectTwo.x + objectTwo.width) >= objectOne.x) &&
+                ((objectOne.y + objectOne.height) >= objectTwo.y) &&
+                ((objectTwo.y + objectTwo.height) >= objectOne.y)
+            )
+        }
+
+        //Pintar
+        function draw(object) {
+            ctx.fillStyle = object.color;
+            ctx.fillRect(object.x, object.y, object.width, object.height);
+        }
+
+        //Direccion
+        function direction(direction) {
+            switch(direction) {
+                case 'up':
+                    player.y -= player.speed;
+                    back();
+                    break;
+                case 'down':
+                    player.y += player.speed;
+                    back();
+                    break;
+                case 'right':
+                    player.x += player.speed;
+                    back();
+                break;
+                case 'left':
+                    player.x -= player.speed;
+                    back();
+                break;
+            }
+        }
+
+        //RegresarPlayer
+        function back() {
+            if (player.x >= 800) {
+                player.x = -40;
+            }else if(player.x + player.width <= 0) {
+                player.x = 790;
+            }else if(player.y >= 500) {
+                player.y = -40;
+            }else if(player.y + player.height <= 0) {
+                player.y = 490;
+            }
+        }
+
+        //drawAndC
+        function drawAndC(){
+
+            ctx.globalAlpha = 1;
+
+            ctx.fillStyle = "white";
+            ctx.fillRect(0, 0, 800, 500);
+
+            ctx.strokeStyle = "black";
+            ctx.fillStyle = "black";
+            ctx.font = "15px Arial";
+            ctx.strokeRect(55, 10, 40, 40);
+            ctx.strokeRect(10, 55, 40, 40);
+            ctx.strokeRect(55, 55, 40, 40);
+            ctx.strokeRect(100, 55, 40, 40);
+
+            ctx.fillText("W", 69, 35, 30, 30);
+            ctx.fillText("A", 25, 80, 30, 30);
+            ctx.fillText("S", 70, 80, 30, 30);
+            ctx.fillText("D", 115, 80, 30, 30);
+
+            ctx.fillText("Score:", 700, 20, 50, 40);
+            ctx.fillText("Speed:", 700, 40, 50, 40);
+
+            while(colision(player, target)) {
+                target.move(getRandomCoord(770), getRandomCoord(470));
+                player.score += 1;
+            }
+            
+            ctx.fillText(player.score, 755, 20, 30, 40);
+            ctx.fillText(player.speed, 755, 40, 30, 40);
+            draw(player);
+            draw(target);
+
+            direction(player.direction);
+            requestAnimationFrame(drawAndC);
+        }
+
+        // Función de controles
+        function controles(event) {
+            switch (event.key) {
+                case 'a':
+                case 'A':
+                    player.direction = "left";
+                    break;
+                case 's':
+                case 'S':
+                    player.direction = "down";
+                    break;
+                case 'd':
+                case 'D':
+                    player.direction = "right";
+                    break;
+                case 'w':
+                case 'W':
+                    player.direction = "up";
+                    break;
+                case '+':
+                    player.speed = player.speed + 1;
+                    break;
+                case '-':
+                    player.speed = player.speed - 1;
+                    break;
+            }
+        }
+
+        document.addEventListener("keydown", controles);
+
+    </script>
+    
+</body>
+</html>
