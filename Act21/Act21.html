@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>IvanRios</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <style>
+        canvas {
+            background-color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+    <div style="display: flex; width: 100%; height: 100vh; align-items: center; justify-content: center; background-color: #9dd8ff;">
+        <canvas id="myCanvas" width="500" height="700" style="border:2px solid black"></canvas>
+    </div>
+
+    <img id="ig" src="ig.png" alt="ig" width="0" height="0">
+    <script>
+        const canvas = document.getElementById("myCanvas");
+        const ctx = canvas.getContext("2d");
+
+        const ig = document.getElementById("ig");
+
+        ctx.fillStyle = "black";
+        ctx.lineWidth = 3;
+        ctx.globalAlpha = 1;
+
+        //Dibujarme
+        cabello();
+        rostro();
+        cuello();
+        playera();
+        brazoPlayera();
+        brazo();
+        celular();
+
+        ctx.stroke();
+
+        drawIg();
+
+        //cabello
+        function cabello() {
+            ctx.moveTo(350, 110);
+            ctx.lineTo(365, 110);
+            ctx.lineTo(383, 118);
+            ctx.lineTo(393, 119);
+            ctx.lineTo(398, 124);
+            ctx.lineTo(404, 124);
+            ctx.lineTo(412, 135);
+            ctx.lineTo(428, 150);
+            ctx.lineTo(429, 151);
+            ctx.lineTo(430, 152);
+            ctx.lineTo(430, 197);
+            ctx.lineTo(424, 207);
+            ctx.lineTo(417, 196);
+            ctx.lineTo(410, 196);
+            ctx.lineTo(398, 205);
+            ctx.lineTo(393, 213);
+            ctx.lineTo(388, 213);
+            ctx.lineTo(385, 190);
+            ctx.lineTo(376, 189);
+            ctx.lineTo(362, 183);
+            ctx.lineTo(355, 165);
+            ctx.lineTo(350, 155);
+            ctx.lineTo(330, 152);
+            ctx.lineTo(321, 155);
+            ctx.lineTo(311, 165);
+            ctx.lineTo(320, 173);
+            ctx.lineTo(318, 173);
+            ctx.lineTo(300, 165);
+            ctx.lineTo(290, 168);
+            ctx.lineTo(287, 195);
+            ctx.lineTo(285, 193);
+            ctx.lineTo(275, 170);
+            ctx.lineTo(285, 150);
+            ctx.lineTo(290, 135);
+            ctx.lineTo(320, 115);
+            ctx.lineTo(350, 110);
+
+            ctx.fillStyle = "black";
+            ctx.fill();
+        }
+
+        //rostro
+        function rostro() {
+            ctx.moveTo(424, 207)
+            ctx.lineTo(417, 196);
+            ctx.lineTo(410, 196);
+            ctx.lineTo(398, 205);
+            ctx.lineTo(393, 213);
+            ctx.lineTo(388, 213);
+            ctx.lineTo(385, 190);
+            ctx.lineTo(376, 189);
+            ctx.lineTo(362, 183);
+            ctx.lineTo(355, 165);
+            ctx.lineTo(350, 155);
+            ctx.lineTo(330, 152);
+            ctx.lineTo(321, 155);
+            ctx.lineTo(311, 165);
+            ctx.lineTo(320, 173);
+            ctx.lineTo(318, 173);
+            ctx.lineTo(300, 165);
+            ctx.lineTo(290, 168);
+            ctx.lineTo(287, 195);
+            ctx.lineTo(285, 200);
+            ctx.lineTo(290, 210);
+            ctx.lineTo(290, 218);
+            ctx.lineTo(287, 228);
+            ctx.lineTo(292, 252);
+            ctx.lineTo(294, 262);
+            ctx.lineTo(303, 278);
+            ctx.lineTo(307, 290);
+            ctx.lineTo(313, 294);
+            ctx.lineTo(328, 296);
+            ctx.lineTo(338, 296);
+            ctx.lineTo(370, 280);
+            ctx.lineTo(390, 260);
+            ctx.lineTo(395, 237);
+            ctx.lineTo(397, 242);
+            ctx.lineTo(404, 242);
+            ctx.lineTo(418, 231);
+            ctx.lineTo(424, 207);
+        }
+
+        function cuello() {
+            ctx.moveTo(407, 242);
+            ctx.lineTo( 407 ,  248.5 );
+            ctx.lineTo( 407 ,  264.5 );
+            ctx.lineTo( 409 ,  272.5 );
+            ctx.lineTo( 412 ,  280.5 );
+            ctx.lineTo( 416 ,  290.5 );
+            ctx.lineTo( 428 ,  299.5 );
+            ctx.lineTo( 422 ,  302.5 );
+            ctx.lineTo( 413 ,  308.5 );
+            ctx.lineTo( 405 ,  314.5 );
+            ctx.lineTo( 397 ,  321.5 );
+            ctx.lineTo( 387 ,  326.5 );
+            ctx.lineTo( 379 ,  330.5 );
+            ctx.lineTo( 368 ,  333.5 );
+            ctx.lineTo( 356 ,  338.5 );
+            ctx.lineTo( 346 ,  338.5 );
+            ctx.lineTo( 336 ,  333.5 );
+            ctx.lineTo( 331 ,  325.5 );
+            ctx.lineTo( 330 ,  316.5 );
+            ctx.lineTo( 331 ,  310.5 );
+            ctx.lineTo( 330 ,  299.5 ); 
+        }
+
+        function playera() {
+            ctx.moveTo(428, 300);
+            ctx.lineTo( 442 ,  306.5 );
+            ctx.lineTo( 450 ,  312.5 );
+            ctx.lineTo( 468 ,  323.5 );
+            ctx.lineTo( 489 ,  337.5 );
+            ctx.lineTo( 502 ,  344.5 );
+            ctx.lineTo( 503 ,  466.5 );
+            ctx.lineTo( 492 ,  461.5 );
+            ctx.lineTo( 481 ,  458.5 );
+            ctx.lineTo( 469 ,  456.5 );
+            ctx.lineTo( 457 ,  456.5 );
+            ctx.lineTo( 447 ,  457.5 );
+            ctx.lineTo( 438 ,  460.5 );
+            ctx.lineTo( 430 ,  465.5 );
+            ctx.lineTo( 425 ,  469.5 );
+            ctx.lineTo( 416 ,  466.5 );
+            ctx.lineTo( 407 ,  462.5 );
+            ctx.lineTo( 390 ,  451.5 );
+            ctx.lineTo( 370 ,  436.5 );
+            ctx.lineTo( 351 ,  420.5 );
+            ctx.lineTo( 338 ,  407.5 );
+            ctx.lineTo( 329 ,  400.5 );
+            ctx.lineTo( 321 ,  394.5 );
+            ctx.lineTo( 311 ,  387.5 );
+            ctx.lineTo( 303 ,  373.5 );
+            ctx.lineTo( 297 ,  363.5 );
+            ctx.lineTo( 295 ,  356.5 );
+            ctx.lineTo( 292 ,  349.5 );
+            ctx.lineTo( 287 ,  344.5 );
+            ctx.lineTo( 281 ,  339.5 );
+            ctx.lineTo( 286 ,  335.5 );
+            ctx.lineTo( 295 ,  331.5 );
+            ctx.lineTo( 309 ,  324.5 );
+            ctx.lineTo( 316 ,  320.5 );
+            ctx.lineTo( 323 ,  315.5 );
+            ctx.lineTo( 332 ,  312.5 );
+            ctx.moveTo( 245 ,  416 );
+            ctx.lineTo( 242 ,  426 );
+            ctx.lineTo( 238 ,  439 );
+            ctx.lineTo( 250 ,  447 );
+            ctx.lineTo( 264 ,  453 );
+            ctx.lineTo( 261 ,  481 );
+            ctx.lineTo( 259 ,  506 );
+            ctx.lineTo( 254 ,  535 );
+            ctx.lineTo( 250 ,  559 );
+            ctx.lineTo( 247 ,  589 );
+            ctx.lineTo( 247 ,  605 );
+            ctx.lineTo( 242 ,  608 );
+            ctx.lineTo( 234 ,  612 );
+            ctx.lineTo( 229 ,  619 );
+            ctx.lineTo( 228 ,  627 );
+            ctx.lineTo( 226 ,  636 );
+            ctx.lineTo( 221 ,  640 );
+            ctx.lineTo( 220 ,  646 );
+            ctx.lineTo( 208 ,  663 );
+            ctx.lineTo( 208 ,  672 );
+            ctx.lineTo( 202 ,  678 );
+            ctx.lineTo( 199 ,  686 );
+            ctx.lineTo( 198 ,  695 );
+            ctx.lineTo( 198 ,  702 );
+            ctx.lineTo( 462 ,  702 );
+            ctx.lineTo( 462 ,  697 );
+            ctx.lineTo( 455 ,  687 );
+            ctx.lineTo( 456 ,  676 );
+            ctx.lineTo( 455 ,  668 );
+            ctx.lineTo( 449 ,  657 );
+            ctx.lineTo( 448 ,  645 );
+            ctx.lineTo( 450 ,  625 );
+            ctx.lineTo( 454 ,  619 );
+            ctx.lineTo( 458 ,  612 );
+            ctx.lineTo( 459 ,  601 );
+            
+        }
+
+        function brazoPlayera() {
+            ctx.moveTo(478 ,  500.5);
+            ctx.lineTo(425 ,  469.5);
+            ctx.lineTo( 428 ,  456.5 );
+            ctx.lineTo( 429 ,  442.5 );
+            ctx.lineTo( 429 ,  426.5 );
+            ctx.lineTo( 428 ,  410.5 );
+            ctx.moveTo( 264 ,  453.5 );
+            ctx.lineTo( 268 ,  425.5 );
+        }
+
+        function brazo() {
+            ctx.moveTo(281 ,  339.5);
+            ctx.lineTo( 274 ,  333.5 );
+            ctx.lineTo( 262 ,  321.5 );
+            ctx.lineTo( 253 ,  313.5 );
+            ctx.lineTo( 249 ,  308.5 );
+            ctx.lineTo( 244 ,  305.5 );
+            ctx.lineTo( 237 ,  301.5 );
+            ctx.lineTo( 230 ,  295.5 );
+            ctx.lineTo( 222 ,  289.5 );
+            ctx.lineTo( 217 ,  286.5 );
+            ctx.lineTo( 213 ,  285.5 );
+            ctx.lineTo( 209 ,  287.5 );
+            ctx.lineTo( 208 ,  291.5 );
+            ctx.lineTo( 209 ,  295.5 );
+            ctx.lineTo( 213 ,  299.5 );
+            ctx.lineTo( 218 ,  305.5 );
+            ctx.lineTo( 222 ,  310.5 );
+            ctx.lineTo( 228 ,  315.5 );
+            ctx.lineTo( 240 ,  327.5 );
+            ctx.lineTo( 250 ,  336.5 );
+            ctx.lineTo( 256 ,  340.5 );
+            ctx.lineTo( 255 ,  343.5 );
+            ctx.lineTo( 250 ,  343.5 );
+            ctx.lineTo( 238 ,  340.5 );
+            ctx.lineTo( 230 ,  335.5 );
+            ctx.lineTo( 223 ,  332.5 );
+            ctx.lineTo( 217 ,  330.5 );
+            ctx.lineTo( 207 ,  329.5 );
+            ctx.lineTo( 199 ,  327.5 );
+            ctx.lineTo( 196 ,  327.5 );
+            ctx.lineTo( 193 ,  329.5 );
+            ctx.lineTo( 191 ,  332.5 );
+            ctx.lineTo( 192 ,  337.5 );
+            ctx.lineTo( 193 ,  340.5 );
+            ctx.lineTo( 200 ,  343.5 );
+            ctx.lineTo( 211 ,  348.5 );
+            ctx.lineTo( 218 ,  352.5 );
+            ctx.lineTo( 228 ,  355.5 );
+            ctx.lineTo( 235 ,  359.5 );
+            ctx.lineTo( 237 ,  363.5 );
+            ctx.lineTo( 232 ,  362.5 );
+            ctx.lineTo( 222 ,  359.5 );
+            ctx.lineTo( 216 ,  356.5 );
+            ctx.lineTo( 210 ,  353.5 );
+            ctx.lineTo( 203 ,  350.5 );
+            ctx.lineTo( 198 ,  349.5 );
+            ctx.lineTo( 195 ,  350.5 );
+            ctx.lineTo( 193 ,  353.5 );
+            ctx.lineTo( 193 ,  358.5 );
+            ctx.lineTo( 196 ,  364.5 );
+            ctx.lineTo( 203 ,  368.5 );
+            ctx.lineTo( 213 ,  372.5 );
+            ctx.lineTo( 220 ,  375.5 );
+            ctx.lineTo( 224 ,  378.5 );
+            ctx.lineTo( 220 ,  381.5 );
+            ctx.lineTo( 212 ,  381.5 );
+            ctx.lineTo( 207 ,  379.5 );
+            ctx.lineTo( 205 ,  380.5 );
+            ctx.lineTo( 203 ,  384.5 );
+            ctx.lineTo( 203 ,  389.5 );
+            ctx.lineTo( 206 ,  395.5 );
+            ctx.lineTo( 216 ,  398.5 );
+            ctx.lineTo( 226 ,  400.5 );
+            ctx.lineTo( 233 ,  405.5 );
+            ctx.lineTo( 244 ,  412.5 );
+            ctx.lineTo( 253 ,  417.5 );
+            ctx.lineTo( 261 ,  421.5 );
+            ctx.lineTo( 273 ,  428.5 );
+            ctx.lineTo( 284 ,  439.5 );
+            ctx.lineTo( 302 ,  458.5 );
+            ctx.lineTo( 329 ,  488.5 );
+            ctx.lineTo( 351 ,  514.5 );
+            ctx.lineTo( 375 ,  540.5 );
+            ctx.lineTo( 393 ,  554.5 );
+            ctx.lineTo( 410 ,  569.5 );
+            ctx.lineTo( 426 ,  577.5 );
+            ctx.lineTo( 444 ,  586.5 );
+            ctx.lineTo( 452 ,  593.5 );
+            ctx.lineTo( 461 ,  599.5 );
+            ctx.lineTo( 472 ,  602.5 );
+            ctx.lineTo( 480 ,  598.5 );
+            ctx.lineTo( 487 ,  591.5 );
+            ctx.lineTo( 498 ,  578.5 );
+            ctx.lineTo( 503 ,  570.5 );
+            ctx.moveTo( 257 ,  448.5 );
+            ctx.lineTo( 254 ,  464.5 );
+            ctx.lineTo( 252 ,  479.5 );
+            ctx.lineTo( 248 ,  496.5 );
+            ctx.lineTo( 244 ,  509.5 );
+            ctx.lineTo( 239 ,  523.5 );
+            ctx.lineTo( 235 ,  536.5 );
+            ctx.lineTo( 233 ,  548.5 );
+            ctx.lineTo( 232 ,  565.5 );
+            ctx.lineTo( 229 ,  580.5 );
+            ctx.lineTo( 224 ,  608.5 );
+            ctx.lineTo( 218 ,  633.5 );
+            ctx.lineTo( 215 ,  651.5 );
+        }
+
+        function celular() {
+            ctx.moveTo(207 ,  379.5 );
+            ctx.lineTo( 204 ,  375.5 );
+            ctx.lineTo( 204 ,  370.5 );
+            ctx.moveTo(204 ,  351.5);
+            ctx.lineTo( 204 ,  346.5 );
+            ctx.moveTo(202 ,  324.5);
+            ctx.lineTo( 201 ,  253.5 );
+            ctx.lineTo( 203 ,  248.5 );
+            ctx.lineTo( 206 ,  246.5 );
+            ctx.lineTo( 261 ,  245.5 );
+            ctx.lineTo( 266 ,  248.5 );
+            ctx.lineTo( 270 ,  254.5 );
+            ctx.lineTo( 269 ,  325.5 );
+        }
+
+        /*
+        ctx.moveTo(207 ,  379.5 );
+
+        canvas.addEventListener("click", function(event) {
+            var rect = canvas.getBoundingClientRect();
+            
+            ctx.lineTo((event.clientX - rect.left), (event.clientY - rect.top));
+            ctx.stroke();
+
+            console.log("ctx.lineTo(", (event.clientX - rect.left), ", ", (event.clientY - rect.top), ");");
+            
+        });
+        */
+
+        function drawIg() {
+            var x = -350;
+            var y = -300;
+            ig.onload = () => {
+                ctx.drawImage(ig, 388 + x, 670 + y, 20, 20);
+                ctx.fillStyle = "black";
+                ctx.fillRect(413 + x, 670 + y, 2, 20);
+                ctx.font = "13px Arial";
+                ctx.fillText("ivanrios_ss", 420 + x, 684 + y, 100, 20);
+            };
+        }
+
+    </script>
+    
+</body>
+</html>

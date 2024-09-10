@@ -1,0 +1,43 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KeyDown</title>
+    <style>
+        canvas{
+            background: #a1e5ff;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="myCanvas" width="500" height="500"></canvas>
+    <script>
+        const canvas = document.getElementById("myCanvas");
+        const ctx = canvas.getContext("2d");
+        document.addEventListener("keydown", cuadroRandom);
+
+        function colorR() {
+            const rC = Math.floor(Math.random() * 16777215);
+            return `#${rC.toString(16).padStart(6, '0')}`;
+        }
+
+        function cuadroRandom() {
+
+            const w = (Math.random() * 450);
+            const h = (Math.random() * 450); 
+
+            ctx.fillStyle=colorR();
+            ctx.beginPath();
+            ctx.fillRect(w, h, 50, 50);
+
+            ctx.fillStyle = "black";
+            ctx.font = "20px Arial";
+            ctx.textAlign="center";
+            ctx.textBaseline="middle";
+
+            ctx.fillText(event.key, w + 25, h +25);
+        }
+
+    </script>
+</body>
+</html>
