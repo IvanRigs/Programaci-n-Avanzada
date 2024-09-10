@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>12</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <style>
+        canvas {
+            background-color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+    <div style="display: flex; width: 100%; height: 100vh; align-items: center; justify-content: center;">
+        <canvas id="myCanvas" width="800" height="500" style="border:2px solid black"></canvas>
+    </div>
+
+    <script>
+        const canvas = document.getElementById("myCanvas");
+        const ctx = canvas.getContext("2d");
+
+        //Evento
+        canvas.addEventListener("click", function(event) {
+            ctx.fillStyle = colorR();
+            ctx.globalAlpha = 0.7;
+            drawCircle((event.clientX - canvas.getBoundingClientRect().left), (event.clientY - canvas.getBoundingClientRect().top));
+        });
+
+        // Circulo
+        function drawCircle(x, y) {
+            ctx.beginPath();
+            ctx.arc(x, y, 50, 0, 2 * Math.PI); 
+            ctx.fill();
+        }
+
+        // Color random
+        function colorR() {
+            return `#${(Math.floor(Math.random() * 16777215)).toString(16).padStart(6, '0')}`;
+        }
+
+    </script>
+    
+</body>
+</html>
