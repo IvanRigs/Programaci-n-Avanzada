@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>22</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <style>
+        canvas {
+            background-color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+    <div style="display: flex; width: 100%; height: 100vh; align-items: center; justify-content: center; background-color: white;">
+        <canvas id="myCanvas" width="900" height="700" style="border:2px solid black;"></canvas>
+    </div>
+    <img id="ig" src="ig.png" alt="ig" width="0" height="0">
+<script>
+        const canvas = document.getElementById("myCanvas");
+        const ctx = canvas.getContext("2d");
+
+        const ig = document.getElementById("ig");
+
+        const atardecer = ctx.createLinearGradient(0, 0, 0, 450);
+        atardecer.addColorStop(0, "#fb6828");
+        atardecer.addColorStop(1, "#fce4da");
+
+        const mont = ctx.createLinearGradient(0, 500, 0, 700);
+        mont.addColorStop(0, "#732e07");
+        mont.addColorStop(1, "#fb6828");
+
+        //Atardecer
+        ctx.fillStyle = atardecer;
+        ctx.fillRect(0, 0, 900, 700);
+
+        //Tierra de fondo
+        ctx.fillStyle = "#f7824e";
+        ctx.fillRect(0, 450, 900, 700);
+
+        //Montanas de fondo (Oscuro)
+        ctx.beginPath();
+        ctx.moveTo(0, 350);
+        ctx.lineTo(20, 330);
+        ctx.lineTo(250, 450);
+        ctx.lineTo(0, 450);
+        ctx.lineTo(0, 350);
+        ctx.fillStyle = "#e37130";
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.moveTo(50, 450);
+        ctx.lineTo(250,290);
+        ctx.lineTo(200,450);
+        ctx.lineTo(50,450);
+
+        ctx.fillStyle = "#ee7f3f";
+        ctx.fill();
+        //ctx.stroke();
+
+        //Sol
+        ctx.beginPath();
+        ctx.arc(750, 200, 30, 0, 2 * Math.PI);
+        ctx.fillStyle = "#f0d55d";
+        ctx.fill();
+
+        //Montanas de fondo (claro)
+        ctx.beginPath();
+        ctx.moveTo(250, 290);
+        ctx.lineTo(200,450);
+        ctx.lineTo(500, 450);
+        ctx.lineTo(250, 290);
+
+        ctx.fillStyle = "#faaa7c";
+        ctx.fill();
+        //ctx.stroke();
+
+        //Primer conjunto de montanas
+        ctx.beginPath(); 
+        ctx.moveTo(0, 520); // Nuevo punto inicial
+        ctx.lineTo(80, 540); // Primer pico más bajo
+        ctx.lineTo(180, 510); // Segundo pico más alto
+        ctx.lineTo(250, 530); // Bajada
+        ctx.lineTo(330, 500); // Pico pronunciado
+        ctx.lineTo(420, 540); // Pico suave
+        ctx.lineTo(500, 510); // Subida más alta
+        ctx.lineTo(600, 530); // Bajada intermedia
+        ctx.lineTo(690, 500); // Pico pequeño
+        ctx.lineTo(780, 540); // Pico suave
+        ctx.lineTo(860, 520); // Pico bajo
+        ctx.lineTo(900, 550); // Final del terreno
+        ctx.lineTo(900, 700); // Extensión inferior
+        ctx.lineTo(0, 700); // Llenar hasta la parte inferior
+        ctx.lineTo(0, 520); // Volver al punto de inicio
+        ctx.fillStyle = mont;
+        ctx.fill();
+
+        //segundo conjunto de montanas
+        ctx.beginPath();
+        ctx.moveTo(0, 600);
+        ctx.lineTo(100, 620);
+        ctx.lineTo(150, 635);
+        ctx.lineTo(200, 590);
+        ctx.lineTo(270, 630);
+        ctx.lineTo(500, 600);
+        ctx.lineTo(530, 606);
+        ctx.lineTo(600, 580);
+        ctx.lineTo(700, 590);
+        ctx.lineTo(800, 630);
+        ctx.lineTo(900, 625);
+        ctx.lineTo(900, 700);
+        ctx.lineTo(0, 700);
+        ctx.lineTo(0, 600);
+
+        ctx.fillStyle = "#010627";
+        ctx.fill();
+
+        drawIg();
+
+        function drawIg() {
+            var x = -350;
+            var y = -370;
+            ig.onload = () => {
+                ctx.drawImage(ig, 388 + x, 670 + y, 20, 20);
+                ctx.fillStyle = "black";
+                ctx.fillRect(413 + x, 670 + y, 2, 20);
+                ctx.font = "13px Arial";
+                ctx.fillText("ivanrios_ss", 420 + x, 684 + y, 100, 20);
+            };
+        }
+        
+    </script>
+    
+</body>
+</html>
